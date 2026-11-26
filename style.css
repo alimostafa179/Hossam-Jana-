@@ -177,8 +177,8 @@ footer{padding:70px 24px 96px;border-top:1px solid rgba(201,162,75,.3);backgroun
 .detail-block.r:nth-child(1){transform:translateX(-50px) rotate(-2deg)}
 .detail-block.r:nth-child(2){transform:translateX(50px) rotate(2deg)}
 .detail-block.r.in{transform:none}
-.venue-name.r{clip-path:inset(0 50% 0 50%);transform:none;transition:clip-path 1.4s cubic-bezier(.7,0,.2,1),opacity 1s}
-.venue-name.r.in{clip-path:inset(0 0 0 0)}
+.venue-name .vn{display:inline-block;clip-path:inset(0 50% 0 50%);transition:clip-path 1.4s cubic-bezier(.7,0,.2,1)}
+.venue-name.r.in .vn{clip-path:inset(0 0 0 0)}
 .map-panel-name,.footer-names{background:linear-gradient(100deg,var(--emerald-deep) 35%,#c9a24b 50%,var(--emerald-deep) 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
 footer .footer-names{background:linear-gradient(100deg,#f8f3e7 35%,#c9a24b 50%,#f8f3e7 65%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 5s linear infinite}
 .ff{position:absolute;top:-90px;left:var(--x);width:var(--s);height:var(--s);opacity:.95;animation:ffall var(--dur) linear var(--del,0s) forwards}
@@ -189,4 +189,4 @@ footer .footer-names{background:linear-gradient(100deg,#f8f3e7 35%,#c9a24b 50%,#
 @keyframes spark{to{transform:translate(var(--dx),var(--dy)) scale(.2);opacity:0}}
 .trail{position:fixed;z-index:80;pointer-events:none;color:var(--gold);font-size:14px;margin:-8px;animation:trail 1s ease-out forwards}
 @keyframes trail{to{transform:translateY(24px) rotate(90deg) scale(.3);opacity:0}}
-@media (prefers-reduced-motion:reduce){.names .ch{opacity:1;filter:none;transform:none;animation:none!important}.ff,.spark,.trail{display:none}.ornament svg,.map-panel-name,.footer-names{animation:none}.ornament::before,.ornament::after{transform:none}.detail-block.r,.venue-name.r{transform:none;clip-path:none}}
+@media (prefers-reduced-motion:reduce){.names .ch{opacity:1;filter:none;transform:none;animation:none!important}.ff,.spark,.trail{display:none}.ornament svg,.map-panel-name,.footer-names{animation:none}.ornament::before,.ornament::after{transform:none}.detail-block.r{transform:none}.venue-name .vn{clip-path:none}}
