@@ -8,6 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Marcellus&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="motion.css?v=4">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -37,12 +38,17 @@
  </symbol>
 </defs></svg>
 
+<div id="prog" aria-hidden="true"></div>
 <div id="petals" aria-hidden="true"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
 <div id="dust" aria-hidden="true"></div>
 <audio id="bgm" loop preload="auto"></audio>
 <button id="music" aria-label="Toggle music"><s></s><s></s><s></s></button>
 
 <div id="cover">
+ <div class="gate gl"></div><div class="gate gr"></div><i class="beam"></i>
+ <div class="cv-in">
+ <svg class="draw" aria-hidden="true"><rect x="0.5" y="0.5" width="99.9%" height="99.9%" pathLength="1"/></svg>
  <div class="frame-line"></div>
  <svg class="cnr c-tl"><use href="#corner"/></svg><svg class="cnr c-tr"><use href="#corner"/></svg>
  <svg class="cnr c-bl"><use href="#corner"/></svg><svg class="cnr c-br"><use href="#corner"/></svg>
@@ -54,13 +60,15 @@
  <svg class="flourish" viewBox="0 0 220 24"><use href="#flourish"/></svg>
  <p class="cover-date" id="cDate"></p>
  <button class="open-btn" id="openBtn">Open Invitation</button>
+ </div>
 </div>
 
 <main id="main">
 <section class="hero">
- <svg class="fx h-l sway"><use href="#flower"/></svg><svg class="fx h-r sway s2"><use href="#flower"/></svg>
+ <div class="rays" aria-hidden="true"></div>
+ <svg class="fx h-l sway" data-par=".18"><use href="#flower"/></svg><svg class="fx h-r sway s2" data-par="-.12"><use href="#flower"/></svg>
  <p class="tag r">Wedding Invitation</p>
- <div class="arch r"><div class="arch-in"><img src="WhatsApp Image 2026-10-17 at 3.35.59 PM.jpeg" alt="Hossam and Jana"></div></div>
+ <div class="arch r"><div class="arch-in"><img data-pimg src="WhatsApp Image 2026-10-17 at 3.35.59 PM.jpeg" alt="Hossam and Jana"></div></div>
  <p class="together r">Together with their families</p>
  <h1 class="names r"><span id="n1"></span><span class="amp">&amp;</span><span id="n2"></span></h1>
  <p class="subtitle r">Request the honour of your presence</p>
@@ -91,7 +99,7 @@
 </section>
 
 <section class="map-section">
- <svg class="fx m-r sway"><use href="#flower"/></svg>
+ <svg class="fx m-r sway" data-par=".15"><use href="#flower"/></svg>
  <p class="section-label r">Venue</p>
  <div class="ornament r"><svg width="14" height="14"><use href="#star"/></svg></div>
  <div class="venue-name r"><span class="vn" id="vName"></span></div>
@@ -112,6 +120,6 @@
  <p class="footer-note" id="fNote"></p>
 </footer>
 </main>
-<script src="script.js?v=3"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>
