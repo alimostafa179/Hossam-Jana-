@@ -4,7 +4,7 @@ const CFG = {
   timeNote: 'Doors open at 6:30 PM',
   venueName: 'Mirage Hall ', venueSub: 'TRANSPORT OFFICERS CLUB', venueArea: 'NILE CORNICHE,SHUBRA EL KHEMA,Cairo, Egypt',
   mapUrl: 'https://maps.app.goo.gl/1XogsQor5jaPZ8Kb9',   // paste your Google Maps link
-  whatsapp: '01001471931',              // international format without +, e.g. 201001234567
+  whatsapp: '201001471931',              // international format without +, e.g. 201001234567
   audio: 'WhatsApp Audio 2026-10-17 at 3.27.09 PM.mp3'    // put your song in the audio folder with this name
 };
 /* =================================== */
@@ -37,7 +37,15 @@ else $('rsvp').style.display = 'none';
 
 function tick() {
   const s = Math.floor((d - new Date()) / 1000);
-  $('count').textContent = s > 0 ? Math.floor(s / 86400) + ' days · ' + Math.floor(s % 86400 / 3600) + ' hours · ' + Math.floor(s % 3600 / 60) + ' minutes to go' : '';
+  if (s > 0) {
+    $('cdD').textContent = Math.floor(s / 86400);
+    $('cdH').textContent = Math.floor(s % 86400 / 3600);
+    $('cdM').textContent = Math.floor(s % 3600 / 60);
+    $('cdS').textContent = s % 60;
+    $('count').textContent = 'until the big day';
+  } else {
+    $('count').textContent = '';
+  }
 }
 tick(); setInterval(tick, 1000);
 
@@ -56,6 +64,19 @@ function petal(burst) {
 }
 setInterval(() => petal(false), 450);
 document.body.classList.add('locked');
+
+/* rising gold dust */
+function dust() {
+  if (reduce || $('dust').childElementCount > 24) return;
+  const e = document.createElement('i'); e.className = 'dust';
+  e.style.left = Math.random() * 100 + '%';
+  e.style.setProperty('--s', (2 + Math.random() * 4) + 'px');
+  e.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px');
+  e.style.setProperty('--dur', (8 + Math.random() * 9) + 's');
+  $('dust').appendChild(e); setTimeout(() => e.remove(), 18000);
+}
+setInterval(dust, 700);
+for (let i = 0; i < 6; i++) setTimeout(dust, i * 250);
 
 /* music */
 const a = $('bgm'), mb = $('music');
@@ -79,9 +100,9 @@ document.querySelectorAll('.r').forEach((el, i) => { el.style.transitionDelay = 
 
 /* ===== MORE MOTION ===== */
 /* letter-by-letter names */
-const split = (el, d) => { const t = el.textContent; el.textContent = '';
+const split = (el, dl) => { const t = el.textContent; el.textContent = '';
   [...t].forEach((c, i) => { const s = document.createElement('span'); s.className = 'ch'; s.textContent = c;
-    s.style.setProperty('--i', i); s.style.setProperty('--d', d + 'ms'); el.appendChild(s); }); };
+    s.style.setProperty('--i', i); s.style.setProperty('--d', dl + 'ms'); el.appendChild(s); }); };
 split($('c1'), 900); split($('c2'), 1500); split($('n1'), 250); split($('n2'), 800);
 document.querySelectorAll('.detail-block').forEach(b => { b.classList.add('r'); io.observe(b); });
 
@@ -106,8 +127,8 @@ document.addEventListener('pointerdown', e => {
   if (reduce || e.target.closest('a,button,input')) return;
   for (let i = 0; i < 10; i++) { const s = document.createElement('i'); s.className = 'spark';
     s.style.left = e.clientX + 'px'; s.style.top = e.clientY + 'px';
-    const a = Math.random() * 6.28, r = 30 + Math.random() * 50;
-    s.style.setProperty('--dx', Math.cos(a) * r + 'px'); s.style.setProperty('--dy', Math.sin(a) * r + 'px');
+    const ang = Math.random() * 6.28, r = 30 + Math.random() * 50;
+    s.style.setProperty('--dx', Math.cos(ang) * r + 'px'); s.style.setProperty('--dy', Math.sin(ang) * r + 'px');
     document.body.appendChild(s); setTimeout(() => s.remove(), 950); }
 });
 let lastT = 0;
